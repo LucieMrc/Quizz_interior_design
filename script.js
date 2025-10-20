@@ -28,22 +28,22 @@ const styleResults = {
     'COTT': { 
         name: "Cottagecore", 
         desc: "La Maison de Campagne de ta grand-mère 🧺🎀",
-        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=128423026866319002/"
+        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=128423026866319002"
     },
     'JAP': { 
         name: "Japandi", 
         desc: "Zen et naturel 🧘‍♀️🪵",
-        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=78461218502829385/"
+        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=1688918606073033"
     },
     'LOFT': { 
         name: "Loft", 
         desc: "Branché dans ton hangar 🧱🏙️",
-        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=2181499816357566/"
+        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=1618549863808456"
     },
     'RIEN': { 
         name: "Nothing", 
         desc: "Pratique avant esthétique 🛒📦",
-        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=461126449369882215/"
+        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=461126449369882215"
     }
 };
 
