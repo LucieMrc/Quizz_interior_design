@@ -88,19 +88,17 @@ function handleAnswer(answerScores) {
     renderQuestion();
 }
 
+// ... (Début de showResult inchangé) ...
 
 function showResult() {
     const quizContent = document.getElementById('quiz-content');
     const resultContainer = document.getElementById('result-container');
     const resultTitle = document.getElementById('result-title');
     const resultDescription = document.getElementById('result-description');
-    // Remplacement : on référence le nouveau conteneur de cadre
-    const pinterestFrameContainer = document.getElementById('pinterest-frame-container'); 
+    // Référencez le conteneur du widget/lien
+    const pinterestContainer = document.getElementById('pinterest-frame-container'); // On garde le même ID de conteneur
     
-    // Trouver le style avec le score le plus élevé (Logique inchangée)
-    let maxScore = -1;
-    let winningStyleCode = 'RIEN'; 
-    // ... (calcul du winningStyleCode inchangé) ...
+    // ... (Logique pour trouver le winningStyleCode) ...
     
     const winningStyle = styleResults[winningStyleCode];
     
@@ -109,30 +107,43 @@ function showResult() {
     resultDescription.textContent = winningStyle.desc;
 
     // -----------------------------------------------------------------
-    // NOUVEAU : Création du cadre d'inspiration (iframe)
+    // NOUVEAU : Préparation de l'élément du Widget Pinterest
     // -----------------------------------------------------------------
-    pinterestFrameContainer.innerHTML = ''; // Nettoyer
+    pinterestContainer.innerHTML = ''; // Nettoyer
     
+    // Titre Brutaliste
     const frameTitle = document.createElement('h3');
-    frameTitle.textContent = "PLANCHE D'INSPIRATION PINNED :";
+    frameTitle.textContent = "INSPIRATION PINTEREST";
     frameTitle.className = 'pinterest-frame-title';
-    pinterestFrameContainer.appendChild(frameTitle);
-    
-    const pinterestFrame = document.createElement('iframe');
-    pinterestFrame.src = winningStyle.pinterestLink;
-    pinterestFrame.title = "Planche d'inspiration Pinterest pour le style " + winningStyle.name;
-    pinterestFrame.width = "100%";
-    pinterestFrame.height = "400"; // Hauteur fixe pour le style
-    pinterestFrame.style.border = "3px solid var(--color-black)"; // Style Brutaliste
-    pinterestFrame.style.boxSizing = "border-box";
+    pinterestContainer.appendChild(frameTitle);
 
-    pinterestFrameContainer.appendChild(pinterestFrame);
+    // 1. Créer l'élément de widget Pinterest (un lien <a>)
+    const pinterestWidget = document.createElement('a');
+    pinterestWidget.href = winningStyle.pinterestLink;
+    pinterestWidget.target = "_blank"; // S'ouvrira en externe si le widget ne charge pas
     
+    // CRITIQUE : L'attribut à transformer. Même si c'est une recherche, on force 'embedPin'
+    pinterestWidget.setAttribute('data-pin-do', 'embedPin');
+    
+    // 2. Tentez de l'ajouter
+    pinterestContainer.appendChild(pinterestWidget);
+    
+    // 3. Demander au script Pinterest de transformer l'élément
+    // Cette fonction est CRITIQUE après injection dynamique
+    if (window.PinUtils && window.PinUtils.build) {
+        window.PinUtils.build();
+    } else {
+        // En cas d'échec de chargement du script, utilisez un bouton de secours brut
+        pinterestWidget.className = "pinterest-button"; 
+        pinterestWidget.textContent = "VOIR LA PLANCHE PINTEREST (Widget non chargé)";
+    }
+
     // Rendre visible la page de résultat
     quizContent.classList.add('hidden');
     resultContainer.classList.remove('hidden');
 }
 
+// ... (Le reste du script est inchangé) ...
 
 // Lancement du chargement des données et mise en place de l'écouteur de clic
 function initQuiz() {

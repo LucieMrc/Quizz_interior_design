@@ -162,10 +162,11 @@ h1 {
     margin-bottom: 20px;
     font-size: 0.9em;
 }
+/* ... Styles existants ... */
 
-/* --- STYLES DU CADRE PINTEREST --- */
+/* --- STYLES DU TITRE DU WIDGET PINTEREST --- */
 .pinterest-frame-title {
-    /* Style Brutaliste: Titre centré, gras, avec des marges */
+    /* Style Brutaliste: Titre centré, gras, dans une bande */
     font-size: 1.1em;
     font-weight: 900;
     text-align: center;
@@ -173,14 +174,32 @@ h1 {
     background-color: var(--color-black);
     padding: 8px 10px;
     margin: 0;
-    border: 3px solid var(--color-white); /* Ligne de démarcation blanche */
+    border-top: 3px solid var(--color-white); /* Ligne de démarcation blanche */
+    border-bottom: 3px solid var(--color-white); 
 }
 
-/* Vous pouvez aussi styliser l'iframe lui-même dans le CSS */
-#pinterest-frame-container iframe {
-    /* Assure que l'iframe est bien géré par le CSS au lieu d'être en style inline */
+/* Style de secours pour le lien externe si le widget ne charge pas */
+.pinterest-button {
     display: block;
+    width: 100%;
+    padding: 12px 10px;
+    margin: 10px 0 20px 0;
+    
+    background-color: var(--color-white); 
+    color: var(--color-black); 
+    
     border: 3px solid var(--color-black); 
+    border-radius: 0; 
+    text-decoration: none; 
+    font-weight: 900;
+    font-size: 1em;
+    cursor: pointer;
     box-sizing: border-box;
-    /* Note : la plupart du style est dans le JS pour la simplicité, mais ceci est plus propre. */
+    text-align: center;
+    transition: none;
+}
+
+.pinterest-button:hover {
+    background-color: var(--color-black); 
+    color: var(--color-white);
 }
