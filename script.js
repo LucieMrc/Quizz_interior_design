@@ -8,42 +8,42 @@ const styleResults = {
     'MAX_TH': { 
         name: "Théatral rétro", 
         desc: "Atelier d'artiste ou Maison-Musée 🕯️🔮",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/128423026873370658/"
      },
     'BOHO_J': { 
         name: "Jungle Bohème", 
         desc: "Plantes 🌴🌿", 
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/128423026865702713/"
      },
     'MCM': { 
         name: "MCM", 
         desc: "Mid Century Modern 🥃🛋️",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/703756188683334/"
     },
     'LUXE_70': { 
         name: "Luxe 70s", 
         desc: "Le Salon des 70's 🍑🎶",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/338121884554982914/"
     },
     'COTT': { 
         name: "Cottagecore", 
         desc: "La Maison de Campagne de ta grand-mère 🧺🎀",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/128423026866319002/"
     },
     'JAP': { 
         name: "Japandi", 
         desc: "Zen et naturel 🧘‍♀️🪵",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/78461218502829385/"
     },
     'LOFT': { 
         name: "Loft", 
         desc: "Branché dans ton hangar 🧱🏙️",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/2181499816357566/"
     },
     'RIEN': { 
         name: "Nothing", 
         desc: "Pratique avant esthétique 🛒📦",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://fr.pinterest.com/pin/461126449369882215/"
     }
 };
 
