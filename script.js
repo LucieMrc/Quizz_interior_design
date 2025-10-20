@@ -123,18 +123,29 @@ function handleAnswer(answerScores) {
     currentQuestionIndex++;
     renderQuestion();
 }
-
 function showResult() {
     const quizContent = document.getElementById('quiz-content');
     const resultContainer = document.getElementById('result-container');
     const resultTitle = document.getElementById('result-title');
     const resultDescription = document.getElementById('result-description');
-    
-    // Référencez le conteneur de l'iframe
     const pinterestFrameContainer = document.getElementById('pinterest-frame-container'); 
     
-    // ... (Logique pour trouver le winningStyleCode) ...
+    // Trouver le style avec le score le plus élevé
+    let maxScore = -1;
+    // 🛑 CORRECTION ICI : DÉCLARER LA VARIABLE
+    let winningStyleCode = 'RIEN'; // On lui donne une valeur par défaut sûre
+
+    for (const styleCode in scores) {
+        if (scores[styleCode] > maxScore) {
+            maxScore = scores[styleCode];
+            // 🛑 L'affectation est correcte, mais la déclaration doit être faite au-dessus
+            winningStyleCode = styleCode; 
+        } else if (scores[styleCode] === maxScore && styleCode === 'RIEN') {
+            winningStyleCode = styleCode; 
+        }
+    }
     
+    // 🛑 Maintenant, la variable est définie et peut être utilisée ici (à l'ancienne ligne 138)
     const winningStyle = styleResults[winningStyleCode];
     
     // Afficher le résultat
