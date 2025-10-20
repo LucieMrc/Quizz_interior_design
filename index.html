@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Design d'Intérieur - Quel est ton style ?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Quel est ton Style de Design d'Intérieur ?</h1>
+        
+        <div id="start-page">
+            <p style="text-align: center; font-size: 1.2em; font-weight: bold; margin-bottom: 40px; margin-top: 20px;">
+                QUIZ DE DÉCORATION INTÉRIEURE. <br> DÉTERMINER VOTRE ARCHÉTYPE DE DESIGN.
+            </p>
+            <button id="start-button">COMMENCER LE QUIZ</button>
+        </div>
+
+        <div id="quiz-content" class="hidden">
+            </div>
+        
+        <div id="result-container" class="hidden">
+            <h2>TON ARCHÉTYPE EST...</h2>
+            <p id="result-title"></p>
+            <p id="result-description"></p>
+            <button onclick="window.location.reload()">RECOMMENCER</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

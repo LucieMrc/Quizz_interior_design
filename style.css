@@ -1,0 +1,164 @@
+/*
+ * Style CSS : Techno Brutaliste des Années 90 (Pur Noir & Blanc)
+ * Palette : Noir & Blanc Strict.
+ * Layout : Répétition, Haute Densité, Bandes Horizontales.
+ */
+
+/* --- COULEURS ET FOND --- */
+:root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-border: var(--color-black); 
+}
+
+body {
+    font-family: 'Arial Black', sans-serif; /* Police grasse et impactante */
+    background-color: var(--color-black); /* Fond Noir Solide */
+    color: var(--color-white);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligner le contenu en haut pour l'effet "bande" */
+    min-height: 100vh;
+}
+
+/* --- CONTENEUR PRINCIPAL --- */
+.quiz-container {
+    background-color: var(--color-white); /* Le conteneur commence en blanc */
+    color: var(--color-black);
+    padding: 0;
+    border-radius: 0; 
+    box-shadow: none; 
+    max-width: 500px; 
+    width: 100%;
+    border: 5px solid var(--color-border); /* Bordure épaisse autour du conteneur */
+    box-sizing: border-box; 
+    margin-top: 50px; /* Ajout d'une marge pour ne pas coller au haut de la page */
+}
+
+h1 {
+    /* Titre dans une bande contrastée */
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 20px 10px;
+    text-align: center;
+    margin: 0;
+    font-size: 1.8em;
+    border-bottom: 5px solid var(--color-white);
+}
+
+/* --- PAGE DE DÉMARRAGE --- */
+#start-page {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    padding: 30px 10px 10px 10px; /* Padding ajusté */
+    text-align: center;
+}
+
+#start-page p {
+    margin: 0 0 40px 0; /* Ajustement des marges du paragraphe */
+    padding: 0 10px;
+}
+
+/* --- STRUCTURE EN BANDES (QUIZ CONTENT) --- */
+#quiz-content {
+    padding: 0;
+    margin: 0;
+    text-align: center; 
+}
+
+/* Styles des Titres de Questions */
+.question-title {
+    /* Première bande de contenu: Texte noir sur fond blanc */
+    font-size: 1.2em;
+    font-weight: 900; 
+    margin: 0;
+    padding: 15px 10px;
+    border-bottom: 3px solid var(--color-border); 
+    text-align: justify; 
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+/* --- STYLES DES OPTIONS DE RÉPONSE & BOUTON COMMENCER --- */
+.answer-option, button {
+    /* Styles de base partagés par les boutons d'option et d'action */
+    display: block;
+    width: 100%;
+    padding: 12px 10px;
+    margin: 0; 
+    border: none;
+    border-radius: 0; 
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: none;
+    box-sizing: border-box;
+    text-align: justify; /* Justifié pour les options */
+}
+
+.answer-option {
+    /* Alternance de Couleurs (Blanc sur Noir) pour les options */
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-bottom: 1px solid var(--color-white); 
+    border-top: 1px solid var(--color-white);
+}
+
+.answer-option:hover {
+    /* Inversion de Couleurs (Noir sur Blanc) au Survol */
+    background-color: var(--color-white); 
+    color: var(--color-black); 
+}
+
+/* Bouton d'Action (Commencer / Recommencer) */
+#start-button, #result-container button {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 15px; /* Plus grand padding pour les boutons d'action */
+    font-size: 1.1em;
+    text-align: center; /* Centré pour les boutons d'action */
+    margin-top: 5px; 
+}
+
+#start-button:hover, #result-container button:hover {
+    background-color: var(--color-white); 
+    color: var(--color-black); 
+    border: 3px solid var(--color-black); /* Effet de bordure au survol */
+}
+
+
+/* --- STYLES DU RÉSULTAT --- */
+.hidden {
+    display: none;
+}
+
+#result-container {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 20px 10px;
+    border-top: 5px solid var(--color-white);
+    margin: 0;
+}
+
+#result-container h2 {
+    color: var(--color-white);
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 0;
+}
+
+#result-title {
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#result-description {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}

@@ -1,0 +1,250 @@
+[
+    {
+        "question": "A. Ton style de draps ?",
+        "options": [
+            {
+                "text": "Blanc ou crème",
+                "scores": { "JAP": 0.5, "MCM": 0.5 }
+            },
+            {
+                "text": "La couleur importe peu, mais la texture si : lin, gaze de coton",
+                "scores": { "JAP": 0.5, "BOHO_J": 0.5 }
+            },
+            {
+                "text": "Dans les couleurs thèmes de ton appart",
+                "scores": { "MAX_POP": 1 }
+            },
+            {
+                "text": "Le motif qui te plaira chez Ikea",
+                "scores": { "RIEN": 1 }
+            }
+        ]
+    },
+    {
+        "question": "B. Le truc Pinterest auquel tu penses souvent…",
+        "options": [
+            {
+                "text": "Un canapé ligne roset, roche bobois, cinna, ainsi de suite, hors de prix",
+                "scores": { "MCM": 0.5, "MAX_POP": 1 }
+            },
+            {
+                "text": "Des étagères en bois du sol au plafond, remplie de plantes et de beaux livres",
+                "scores": { "JAP": 0.5, "BOHO_J": 0.5 }
+            },
+            {
+                "text": "Un espace ouvert immense, haut plafond, tout en une seule pièce",
+                "scores": { "LOFT": 1 }
+            },
+            {
+                "text": "Les espaces optimisés pour être pratiques avant tout",
+                "scores": { "RIEN": 1 }
+            }
+        ]
+    },
+    {
+        "question": "C. Ta relation avec les tapis ?",
+        "options": [
+            {
+                "text": "Plus il y en a, mieux c’est",
+                "scores": { "MAX_TH": 0.5, "LUXE_70": 0.5 }
+            },
+            {
+                "text": "Pas de tapis : trop beau mon carrelage/parquet/béton ciré",
+                "scores": { "LOFT": 0.5, "COTT": 0.5 }
+            },
+            {
+                "text": "Un tapis uni ou motif discret, pour délimiter le salon par exemple, c’est okay",
+                "scores": { "JAP": 0.5, "MCM": 0.5 }
+            },
+            {
+                "text": "Pour éviter le carrelage froid, pas forcément de préférence sur le motif ou la couleur",
+                "scores": { "RIEN": 1 }
+            }
+        ]
+    },
+    {
+        "question": "D. Ton matériau de prédilection pour les meubles ou les objets ?",
+        "options": [
+            {
+                "text": "Le plastique, la résine ou l’acrylique : pleins de couleur, opaque ou transparents",
+                "scores": { "MAX_POP": 1, "LOFT": 0.5 }
+            },
+            {
+                "text": "Le bois clair ou peint",
+                "scores": { "JAP": 0.5, "COTT": 0.5, "MAX_TH": 0.5 }
+            },
+            {
+                "text": "Rotin, osier, céramique, bois un peu brut : ambiance artisanal miam",
+                "scores": { "BOHO_J": 1 }
+            },
+            {
+                "text": "Le bois foncé ou le métal chromé",
+                "scores": { "MCM": 0.5, "LUXE_70": 0.5 }
+            }
+        ]
+    },
+    {
+        "question": "E. C’est quoi le truc important d’un appart pour toi ?",
+        "options": [
+            {
+                "text": "Des grandes fenêtres, plein de lumière",
+                "scores": { "JAP": 0.5 }
+            },
+            {
+                "text": "Un sol en béton ciré",
+                "scores": { "LOFT": 1 }
+            },
+            {
+                "text": "Un carrelage damier au sol de la cuisine ou une belle crédence d’époque dans la salle de bain",
+                "scores": { "COTT": 1 }
+            },
+            {
+                "text": "Une cuisine ouverte, un open floor plan",
+                "scores": { "LOFT": 1, "LUXE_70": 0.5 }
+            }
+        ]
+    },
+    {
+        "question": "F. La chambre parfaite ?",
+        "options": [
+            {
+                "text": "Un lit à baldaquin, une multitude de couettes, de coussins, un gros tapis",
+                "scores": { "LUXE_70": 0.5, "MAX_TH": 1 }
+            },
+            {
+                "text": "Un lit bas, des draps neutres, une ou deux plantes",
+                "scores": { "JAP": 1 }
+            },
+            {
+                "text": "Tous les tableaux, les bibelots, les livres, un petit néon pour une lumière tamisée",
+                "scores": { "MAX_POP": 1 }
+            },
+            {
+                "text": "Des rideaux en macramé, des bougies",
+                "scores": { "COTT": 0.5, "BOHO_J": 1 }
+            }
+        ]
+    },
+    {
+        "question": "G. Comment tu gères tes plantes ?",
+        "options": [
+            {
+                "text": "Quelles plantes?",
+                "scores": { "RIEN": 1 }
+            },
+            {
+                "text": "Cache pots en osier et suspensions en macramé",
+                "scores": { "BOHO_J": 1 }
+            },
+            {
+                "text": "Deux trois plantes par ci par là, assez en forme, assez graphiques",
+                "scores": { "JAP": 1, "MCM": 0.5 }
+            },
+            {
+                "text": "J’arrive pas à les gérer y’en a absolument partout, mais je ne suis pas encore sûre d’en avoir assez",
+                "scores": { "MAX_TH": 1 }
+            }
+        ]
+    },
+    {
+        "question": "H. Au mur tu as ?",
+        "options": [
+            {
+                "text": "Pleins d’affiches, de tableaux, de bibelots",
+                "scores": { "MAX_POP": 0.5, "MAX_TH": 0.5 }
+            },
+            {
+                "text": "Un ou deux tableaux abstraits",
+                "scores": { "JAP": 0.5, "LOFT": 0.5 }
+            },
+            {
+                "text": "Une tapisserie, un macramé, ce genre de truc",
+                "scores": { "COTT": 0.5, "BOHO_J": 0.5 }
+            },
+            {
+                "text": "Des photos, des affiches qu’on m’a donné, ou alors rien",
+                "scores": { "RIEN": 1 }
+            }
+        ]
+    },
+    {
+        "question": "I. Le salon idéal ?",
+        "options": [
+            {
+                "text": "Un conversation pit (sous le niveau du sol là), des immenses canapés en velours, de la moquette ou un gros tapis, une table basse miroir",
+                "scores": { "LUXE_70": 1.5, "MCM": 0.5 }
+            },
+            {
+                "text": "Un fauteuil en rotin, une grande chauffeuse pleine de coussin",
+                "scores": { "BOHO_J": 1 }
+            },
+            {
+                "text": "Un canapé avec des coussins en point de croix, des couvertures en crochet, un poêle, un fauteuil en cuir usé dans un coin",
+                "scores": { "COTT": 1 }
+            },
+            {
+                "text": "Tant qu’il y a un canapé, une table basse et une télé on est bien",
+                "scores": { "RIEN": 1 }
+            }
+        ]
+    },
+    {
+        "question": "J. Le feu ?",
+        "options": [
+            {
+                "text": "une collection de bougeoirs chromé",
+                "scores": { "MCM": 1 }
+            },
+            {
+                "text": "bougies partout cire partout",
+                "scores": { "MAX_TH": 1 }
+            },
+            {
+                "text": "une cheminée <3",
+                "scores": { "COTT": 1 }
+            },
+            {
+                "text": "un poêle à bois en métal émaillé orange",
+                "scores": { "LUXE_70": 1 }
+            }
+        ]
+    },
+    {
+        "question": "K. Ta couleur pref de déco",
+        "options": [
+            {
+                "text": "orange",
+                "scores": { "LUXE_70": 0.5, "MCM": 0.5 }
+            },
+            {
+                "text": "rouge ou bleu",
+                "scores": { "COTT": 0.5, "MAX_TH": 0.5 }
+            },
+            {
+                "text": "toutes les couleurs",
+                "scores": { "MAX_POP": 1 }
+            },
+            {
+                "text": "gris",
+                "scores": { "LOFT": 1 }
+            }
+        ]
+    },
+    {
+        "question": "L. Comment tu sources ?",
+        "options": [
+            {
+                "text": "leboncoin lover ou selency style",
+                "scores": { "MCM": 1, "LUXE_70": 1 }
+            },
+            {
+                "text": "DIY diva",
+                "scores": { "COTT": 0.5, "MAX_TH": 0.5, "BOHO_J": 0.5 }
+            },
+            {
+                "text": "Idéal Ikea ou Amazon amazone",
+                "scores": { "MAX_POP": 0.5, "RIEN": 0.5 }
+            }
+        ]
+    }
+]
