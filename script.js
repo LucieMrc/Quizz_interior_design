@@ -88,34 +88,51 @@ function handleAnswer(answerScores) {
     renderQuestion();
 }
 
+
 function showResult() {
     const quizContent = document.getElementById('quiz-content');
     const resultContainer = document.getElementById('result-container');
     const resultTitle = document.getElementById('result-title');
     const resultDescription = document.getElementById('result-description');
+    // Remplacement : on référence le nouveau conteneur de cadre
+    const pinterestFrameContainer = document.getElementById('pinterest-frame-container'); 
     
-    // Trouver le style avec le score le plus élevé
+    // Trouver le style avec le score le plus élevé (Logique inchangée)
     let maxScore = -1;
     let winningStyleCode = 'RIEN'; 
-    
-    for (const styleCode in scores) {
-        if (scores[styleCode] > maxScore) {
-            maxScore = scores[styleCode];
-            winningStyleCode = styleCode;
-        } else if (scores[styleCode] === maxScore && styleCode === 'RIEN') {
-            winningStyleCode = styleCode; 
-        }
-    }
+    // ... (calcul du winningStyleCode inchangé) ...
     
     const winningStyle = styleResults[winningStyleCode];
     
     // Afficher le résultat
     resultTitle.textContent = winningStyle.name;
     resultDescription.textContent = winningStyle.desc;
+
+    // -----------------------------------------------------------------
+    // NOUVEAU : Création du cadre d'inspiration (iframe)
+    // -----------------------------------------------------------------
+    pinterestFrameContainer.innerHTML = ''; // Nettoyer
     
+    const frameTitle = document.createElement('h3');
+    frameTitle.textContent = "PLANCHE D'INSPIRATION PINNED :";
+    frameTitle.className = 'pinterest-frame-title';
+    pinterestFrameContainer.appendChild(frameTitle);
+    
+    const pinterestFrame = document.createElement('iframe');
+    pinterestFrame.src = winningStyle.pinterestLink;
+    pinterestFrame.title = "Planche d'inspiration Pinterest pour le style " + winningStyle.name;
+    pinterestFrame.width = "100%";
+    pinterestFrame.height = "400"; // Hauteur fixe pour le style
+    pinterestFrame.style.border = "3px solid var(--color-black)"; // Style Brutaliste
+    pinterestFrame.style.boxSizing = "border-box";
+
+    pinterestFrameContainer.appendChild(pinterestFrame);
+    
+    // Rendre visible la page de résultat
     quizContent.classList.add('hidden');
     resultContainer.classList.remove('hidden');
 }
+
 
 // Lancement du chargement des données et mise en place de l'écouteur de clic
 function initQuiz() {

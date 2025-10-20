@@ -162,3 +162,25 @@ h1 {
     margin-bottom: 20px;
     font-size: 0.9em;
 }
+
+/* --- STYLES DU CADRE PINTEREST --- */
+.pinterest-frame-title {
+    /* Style Brutaliste: Titre centré, gras, avec des marges */
+    font-size: 1.1em;
+    font-weight: 900;
+    text-align: center;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    padding: 8px 10px;
+    margin: 0;
+    border: 3px solid var(--color-white); /* Ligne de démarcation blanche */
+}
+
+/* Vous pouvez aussi styliser l'iframe lui-même dans le CSS */
+#pinterest-frame-container iframe {
+    /* Assure que l'iframe est bien géré par le CSS au lieu d'être en style inline */
+    display: block;
+    border: 3px solid var(--color-black); 
+    box-sizing: border-box;
+    /* Note : la plupart du style est dans le JS pour la simplicité, mais ceci est plus propre. */
+}
