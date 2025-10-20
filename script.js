@@ -167,7 +167,8 @@ function showResult() {
 const pinterestFrame = document.createElement('iframe');
     
 // CRITIQUE : Cette ligne utilise le lien. C'est ici que l'erreur se produit.
-pinterestFrame.src = winningStyle.pinterestLink; 
+pinterestFrame.src = winningStyle.pinterestLink;
+console.log(winningStyle.pinterestLink);
 
 pinterestFrame.title = "Planche d'inspiration pour le style " + winningStyle.name;
 pinterestFrame.width = "100%";
@@ -176,9 +177,7 @@ pinterestFrame.setAttribute('frameborder', '0');
 pinterestFrame.className = 'pinterest-iframe'; 
 
 pinterestFrameContainer.appendChild(pinterestFrame);
-    
-    pinterestFrameContainer.appendChild(pinterestFrame);
-    
+        
     // Rendre visible la page de résultat
     quizContent.classList.add('hidden');
     resultContainer.classList.remove('hidden');
