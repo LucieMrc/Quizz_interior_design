@@ -3,47 +3,47 @@ const styleResults = {
     'MAX_POP': { 
         name: "Kitsch & Couleur (Post-Moderne)", 
         desc: "Cool Kid Tik Tok, anti-minimalisme 🌈✨",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
  },
     'MAX_TH': { 
         name: "Théatral rétro", 
         desc: "Atelier d'artiste ou Maison-Musée 🕯️🔮",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
      },
     'BOHO_J': { 
         name: "Jungle Bohème", 
         desc: "Plantes 🌴🌿", 
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
      },
     'MCM': { 
         name: "MCM", 
         desc: "Mid Century Modern 🥃🛋️",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
     },
     'LUXE_70': { 
         name: "Luxe 70s", 
         desc: "Le Salon des 70's 🍑🎶",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
     },
     'COTT': { 
         name: "Cottagecore", 
         desc: "La Maison de Campagne de ta grand-mère 🧺🎀",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
     },
     'JAP': { 
         name: "Japandi", 
         desc: "Zen et naturel 🧘‍♀️🪵",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
     },
     'LOFT': { 
         name: "Loft", 
         desc: "Branché dans ton hangar 🧱🏙️",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
     },
     'RIEN': { 
         name: "Nothing", 
         desc: "Pratique avant esthétique 🛒📦",
-        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
     }
 };
 
@@ -124,15 +124,14 @@ function handleAnswer(answerScores) {
     renderQuestion();
 }
 
-// ... (Début de showResult inchangé) ...
-
 function showResult() {
     const quizContent = document.getElementById('quiz-content');
     const resultContainer = document.getElementById('result-container');
     const resultTitle = document.getElementById('result-title');
     const resultDescription = document.getElementById('result-description');
-    // Référencez le conteneur du widget/lien
-    const pinterestContainer = document.getElementById('pinterest-frame-container'); // On garde le même ID de conteneur
+    
+    // Référencez le conteneur de l'iframe
+    const pinterestFrameContainer = document.getElementById('pinterest-frame-container'); 
     
     // ... (Logique pour trouver le winningStyleCode) ...
     
@@ -143,37 +142,28 @@ function showResult() {
     resultDescription.textContent = winningStyle.desc;
 
     // -----------------------------------------------------------------
-    // NOUVEAU : Préparation de l'élément du Widget Pinterest
+    // NOUVEAU : Création de l'iframe qui a fonctionné pour vous
     // -----------------------------------------------------------------
-    pinterestContainer.innerHTML = ''; // Nettoyer
+    pinterestFrameContainer.innerHTML = ''; // Nettoyer
     
-    // Titre Brutaliste
+    // 1. Titre Brutaliste
     const frameTitle = document.createElement('h3');
-    frameTitle.textContent = "INSPIRATION PINTEREST";
+    frameTitle.textContent = "INSPIRATION VISUELLE";
     frameTitle.className = 'pinterest-frame-title';
-    pinterestContainer.appendChild(frameTitle);
-
-    // 1. Créer l'élément de widget Pinterest (un lien <a>)
-    const pinterestWidget = document.createElement('a');
-    pinterestWidget.href = winningStyle.pinterestLink;
-    pinterestWidget.target = "_blank"; // S'ouvrira en externe si le widget ne charge pas
+    pinterestFrameContainer.appendChild(frameTitle);
     
-    // CRITIQUE : L'attribut à transformer. Même si c'est une recherche, on force 'embedPin'
-    pinterestWidget.setAttribute('data-pin-do', 'embedPin');
+    // 2. Création de l'élément iFrame
+    const pinterestFrame = document.createElement('iframe');
+    pinterestFrame.src = winningStyle.pinterestLink;
+    pinterestFrame.title = "Planche d'inspiration pour le style " + winningStyle.name;
+    pinterestFrame.width = "100%";
+    pinterestFrame.height = "400"; // Hauteur fixe
+    // Les styles de bordure seront appliqués par le CSS pour la propreté, mais on laisse le strict minimum ici
+    pinterestFrame.setAttribute('frameborder', '0'); 
+    pinterestFrame.className = 'pinterest-iframe'; // Classe pour le style CSS
     
-    // 2. Tentez de l'ajouter
-    pinterestContainer.appendChild(pinterestWidget);
+    pinterestFrameContainer.appendChild(pinterestFrame);
     
-    // 3. Demander au script Pinterest de transformer l'élément
-    // Cette fonction est CRITIQUE après injection dynamique
-    if (window.PinUtils && window.PinUtils.build) {
-        window.PinUtils.build();
-    } else {
-        // En cas d'échec de chargement du script, utilisez un bouton de secours brut
-        pinterestWidget.className = "pinterest-button"; 
-        pinterestWidget.textContent = "VOIR LA PLANCHE PINTEREST (Widget non chargé)";
-    }
-
     // Rendre visible la page de résultat
     quizContent.classList.add('hidden');
     resultContainer.classList.remove('hidden');
