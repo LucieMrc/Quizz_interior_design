@@ -1,14 +1,50 @@
 // Définition des 9 styles avec leurs descriptions
 const styleResults = {
-    'MAX_POP': { name: "Kitsch & Couleur (Post-Moderne)", desc: "Cool Kid Tik Tok, anti-minimalisme 🌈✨" },
-    'MAX_TH': { name: "Théatral rétro", desc: "Atelier d'artiste ou Maison-Musée 🕯️🔮" },
-    'BOHO_J': { name: "Jungle Bohème", desc: "Plantes 🌴🌿" },
-    'MCM': { name: "MCM", desc: "Mid Century Modern 🥃🛋️" },
-    'LUXE_70': { name: "Luxe 70s", desc: "Le Salon des 70's 🍑🎶" },
-    'COTT': { name: "Cottagecore", desc: "La Maison de Campagne de ta grand-mère 🧺🎀" },
-    'JAP': { name: "Japandi", desc: "Zen et naturel 🧘‍♀️🪵" },
-    'LOFT': { name: "Loft", desc: "Branché dans ton hangar 🧱🏙️" },
-    'RIEN': { name: "Nothing", desc: "Pratique avant esthétique 🛒📦" }
+    'MAX_POP': { 
+        name: "Kitsch & Couleur (Post-Moderne)", 
+        desc: "Cool Kid Tik Tok, anti-minimalisme 🌈✨",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+ },
+    'MAX_TH': { 
+        name: "Théatral rétro", 
+        desc: "Atelier d'artiste ou Maison-Musée 🕯️🔮",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+     },
+    'BOHO_J': { 
+        name: "Jungle Bohème", 
+        desc: "Plantes 🌴🌿", 
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+     },
+    'MCM': { 
+        name: "MCM", 
+        desc: "Mid Century Modern 🥃🛋️",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+    },
+    'LUXE_70': { 
+        name: "Luxe 70s", 
+        desc: "Le Salon des 70's 🍑🎶",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+    },
+    'COTT': { 
+        name: "Cottagecore", 
+        desc: "La Maison de Campagne de ta grand-mère 🧺🎀",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+    },
+    'JAP': { 
+        name: "Japandi", 
+        desc: "Zen et naturel 🧘‍♀️🪵",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+    },
+    'LOFT': { 
+        name: "Loft", 
+        desc: "Branché dans ton hangar 🧱🏙️",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+    },
+    'RIEN': { 
+        name: "Nothing", 
+        desc: "Pratique avant esthétique 🛒📦",
+        pinterestLink: "https://fr.pinterest.com/search/pins/?q=maximalisme%20postmoderne%20design"
+    }
 };
 
 let questions = []; 
