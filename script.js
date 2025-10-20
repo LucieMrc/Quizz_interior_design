@@ -163,15 +163,19 @@ function showResult() {
     frameTitle.className = 'pinterest-frame-title';
     pinterestFrameContainer.appendChild(frameTitle);
     
-    // 2. Création de l'élément iFrame
-    const pinterestFrame = document.createElement('iframe');
-    pinterestFrame.src = winningStyle.pinterestLink;
-    pinterestFrame.title = "Planche d'inspiration pour le style " + winningStyle.name;
-    pinterestFrame.width = "100%";
-    pinterestFrame.height = "400"; // Hauteur fixe
-    // Les styles de bordure seront appliqués par le CSS pour la propreté, mais on laisse le strict minimum ici
-    pinterestFrame.setAttribute('frameborder', '0'); 
-    pinterestFrame.className = 'pinterest-iframe'; // Classe pour le style CSS
+// 2. Création de l'élément iFrame
+const pinterestFrame = document.createElement('iframe');
+    
+// CRITIQUE : Cette ligne utilise le lien. C'est ici que l'erreur se produit.
+pinterestFrame.src = winningStyle.pinterestLink; 
+
+pinterestFrame.title = "Planche d'inspiration pour le style " + winningStyle.name;
+pinterestFrame.width = "100%";
+pinterestFrame.height = "400"; 
+pinterestFrame.setAttribute('frameborder', '0'); 
+pinterestFrame.className = 'pinterest-iframe'; 
+
+pinterestFrameContainer.appendChild(pinterestFrame);
     
     pinterestFrameContainer.appendChild(pinterestFrame);
     
