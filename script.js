@@ -3,7 +3,7 @@ const styleResults = {
     'MAX_POP': { 
         name: "Kitsch & Couleur (Post-Moderne)", 
         desc: "Cool Kid Tik Tok, anti-minimalisme 🌈✨",
-        pinterestLink: "https://fr.pinterest.com/pin/351912466721586/"
+        pinterestLink: "https://assets.pinterest.com/ext/embed.html?id=351912466721586"
  },
     'MAX_TH': { 
         name: "Théatral rétro", 
