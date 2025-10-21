@@ -50,6 +50,30 @@ const styleResults = {
 let questions = []; 
 let currentQuestionIndex = 0;
 let scores = {};
+let maxTotalScore = 0; // Déclaration globale de la variable
+
+// --- Fonctions de Logique du Quiz ---
+
+function initScores() {
+    Object.keys(styleResults).forEach(key => {
+        scores[key] = 0;
+    });
+}
+
+// Fonction pour calculer le score total maximum possible
+function calculateMaxScore() {
+    maxTotalScore = 0;
+    questions.forEach(q => {
+        let maxOptionScore = 0;
+        q.options.forEach(option => {
+            const optionMax = Math.max(...Object.values(option.scores));
+            if (optionMax > maxOptionScore) {
+                maxOptionScore = optionMax;
+            }
+        });
+        maxTotalScore += maxOptionScore;
+    });
+}
 
 // --- Logique de chargement des données JSON ---
 async function loadQuizData() {
@@ -60,21 +84,13 @@ async function loadQuizData() {
         }
         questions = await response.json();
         
-        // Initialiser les scores une fois les données chargées
+        calculateMaxScore(); // Appel du calcul du max
         initScores();
-        // Ne PAS appeler renderQuestion ici, on attend le clic sur Start
+        
     } catch (error) {
         console.error("Erreur lors du chargement des données du quiz:", error);
         document.getElementById('quiz-content').innerHTML = "<p>Désolé, impossible de charger le quiz. (Erreur JSON)</p>";
     }
-}
-
-// --- Fonctions de Logique du Quiz ---
-
-function initScores() {
-    Object.keys(styleResults).forEach(key => {
-        scores[key] = 0;
-    });
 }
 
 // Nouvelle fonction pour démarrer le quiz après le clic
@@ -123,67 +139,86 @@ function handleAnswer(answerScores) {
     currentQuestionIndex++;
     renderQuestion();
 }
+
 function showResult() {
     const quizContent = document.getElementById('quiz-content');
     const resultContainer = document.getElementById('result-container');
     const resultTitle = document.getElementById('result-title');
     const resultDescription = document.getElementById('result-description');
     const pinterestFrameContainer = document.getElementById('pinterest-frame-container'); 
-    
-    // Trouver le style avec le score le plus élevé
-    let maxScore = -1;
-    // 🛑 CORRECTION ICI : DÉCLARER LA VARIABLE
-    let winningStyleCode = 'RIEN'; // On lui donne une valeur par défaut sûre
+    const resultPercentages = document.getElementById('result-percentages'); // Référence au nouveau conteneur
 
+    // -----------------------------------------------------------
+    // 1. Calcul du classement et des pourcentages
+    // -----------------------------------------------------------
+
+    // Créer un tableau triable
+    const sortedScores = [];
     for (const styleCode in scores) {
-        if (scores[styleCode] > maxScore) {
-            maxScore = scores[styleCode];
-            // 🛑 L'affectation est correcte, mais la déclaration doit être faite au-dessus
-            winningStyleCode = styleCode; 
-        } else if (scores[styleCode] === maxScore && styleCode === 'RIEN') {
-            winningStyleCode = styleCode; 
-        }
+        // Le pourcentage est calculé par rapport au score total maximum possible
+        const percentage = maxTotalScore > 0 ? ((scores[styleCode] / maxTotalScore) * 100).toFixed(0) : 0;
+        
+        sortedScores.push({
+            code: styleCode,
+            score: scores[styleCode],
+            percentage: parseInt(percentage) // Convertir en entier
+        });
     }
-    
-    // 🛑 Maintenant, la variable est définie et peut être utilisée ici (à l'ancienne ligne 138)
-    const winningStyle = styleResults[winningStyleCode];
-    
-    // Afficher le résultat
-    resultTitle.textContent = winningStyle.name;
+
+    // Trier par score (descendant)
+    sortedScores.sort((a, b) => b.score - a.score);
+
+    const topStyle = sortedScores[0];
+    const winningStyle = styleResults[topStyle.code];
+
+    // -----------------------------------------------------------
+    // 2. Affichage des 3 meilleurs résultats
+    // -----------------------------------------------------------
+
+    // 1. Titre principal (Gagnant)
+    resultTitle.textContent = `${winningStyle.name}`;
     resultDescription.textContent = winningStyle.desc;
 
-    // -----------------------------------------------------------------
-    // NOUVEAU : Création de l'iframe qui a fonctionné pour vous
-    // -----------------------------------------------------------------
-    pinterestFrameContainer.innerHTML = ''; // Nettoyer
+    // 2. Construction de la chaîne de pourcentage des 3 meilleurs
+    let percentageText = `Votre style est à **${topStyle.percentage}%** ${winningStyle.name}.`;
     
-    // 1. Titre Brutaliste
+    if (sortedScores.length > 1) {
+        const secondStyle = sortedScores[1];
+        percentageText += `<br> Suivi par **${styleResults[secondStyle.code].name}** à ${secondStyle.percentage}%.`;
+    }
+    if (sortedScores.length > 2) {
+        const thirdStyle = sortedScores[2];
+        percentageText += ` Et **${styleResults[thirdStyle.code].name}** à ${thirdStyle.percentage}%.`;
+    }
+    
+    resultPercentages.innerHTML = percentageText; // Injection dans le nouveau conteneur
+
+    // -----------------------------------------------------------
+    // 3. Affichage de l'iFrame Pinterest (inchangé)
+    // -----------------------------------------------------------
+    pinterestFrameContainer.innerHTML = ''; 
+
+    // Titre Brutaliste
     const frameTitle = document.createElement('h3');
     frameTitle.textContent = "INSPIRATION VISUELLE";
     frameTitle.className = 'pinterest-frame-title';
     pinterestFrameContainer.appendChild(frameTitle);
     
-// 2. Création de l'élément iFrame
-const pinterestFrame = document.createElement('iframe');
+    // Création de l'élément iFrame
+    const pinterestFrame = document.createElement('iframe');
+    pinterestFrame.src = winningStyle.pinterestLink;
+    pinterestFrame.title = "Planche d'inspiration pour le style " + winningStyle.name;
+    pinterestFrame.width = "100%";
+    pinterestFrame.height = "400"; 
+    pinterestFrame.setAttribute('frameborder', '0'); 
+    pinterestFrame.className = 'pinterest-iframe'; 
     
-// CRITIQUE : Cette ligne utilise le lien. C'est ici que l'erreur se produit.
-pinterestFrame.src = winningStyle.pinterestLink;
-console.log(winningStyle.pinterestLink);
-
-pinterestFrame.title = "Planche d'inspiration pour le style " + winningStyle.name;
-pinterestFrame.width = "100%";
-pinterestFrame.height = "400"; 
-pinterestFrame.setAttribute('frameborder', '0'); 
-pinterestFrame.className = 'pinterest-iframe'; 
-
-pinterestFrameContainer.appendChild(pinterestFrame);
+    pinterestFrameContainer.appendChild(pinterestFrame);
         
     // Rendre visible la page de résultat
     quizContent.classList.add('hidden');
     resultContainer.classList.remove('hidden');
 }
-
-// ... (Le reste du script est inchangé) ...
 
 // Lancement du chargement des données et mise en place de l'écouteur de clic
 function initQuiz() {

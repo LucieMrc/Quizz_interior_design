@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-
 <body>
 
     <div class="quiz-container">
@@ -28,14 +26,18 @@
                 <h2>Your style is...</h2>
                 <p id="result-title"></p>
                 <p id="result-description"></p>
-    
+
                 <div id="pinterest-frame-container" style="margin: 20px 0;">
-                    </div>
+                </div>
+    
+                <p id="result-percentages" class="percentage-band"></p>
+
                 
                 <button onclick="window.location.reload()">RECOMMENCER</button>
             </div>
         </div>
     
         <script src="script.js"></script>
+        <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     </body>
     </html>
